@@ -31,6 +31,9 @@ print(duration_stats)
 # Adat betöltése
 df = pd.read_csv("tiktok_dataset.csv", sep=",")
 
+# Like/View arány számítása
+df['like_view_ratio'] = df['video_like_count'] / df['video_view_count']
+
 # Claim és opinion videók szűrése
 claim_videos = df[df['claim_status'] == 'claim']
 opinion_videos = df[df['claim_status'] == 'opinion']

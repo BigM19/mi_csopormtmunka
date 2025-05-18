@@ -94,6 +94,19 @@ duration_corr = correlation.loc['video_duration_sec']
 
 print(duration_corr)
 
+#Sűrűségtérkép
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.hexbin(data['video_duration_sec'], data['video_view_count'],
+           gridsize=50, cmap='viridis', bins='log')
+plt.xlabel('Videó hossza (mp)')
+plt.ylabel('Nézettség')
+plt.title('Videóhossz vs. Nézettség (Hexbin térkép)')
+plt.colorbar(label='Pontok száma (log)')
+plt.yscale('log')
+plt.show()
+
 
 
 

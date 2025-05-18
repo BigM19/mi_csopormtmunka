@@ -1,5 +1,5 @@
 import pandas as pd
+import numpy as np
 
-data = pd.read_csv("tiktok_dataset.csv")
-data.head()
-
+# 2. Adat betöltése
+df = pd.read_csv("tiktok_dataset.csv")

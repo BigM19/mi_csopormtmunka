@@ -34,3 +34,8 @@ df = pd.read_csv("tiktok_dataset.csv", sep=",")
 # Claim és opinion videók szűrése
 claim_videos = df[df['claim_status'] == 'claim']
 opinion_videos = df[df['claim_status'] == 'opinion']
+
+
+# Számosság
+claim_count = len(claim_videos)
+opinion_count = len(opinion_videos)

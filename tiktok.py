@@ -77,3 +77,8 @@ divisive_videos = df[
 divisive_count = len(divisive_videos)
 total_count = len(df)
 divisive_sample = divisive_videos[['video_id', 'video_view_count', 'video_like_count', 'like_view_ratio']].head(5)
+
+#kiírás
+print("Megosztó videók száma:", divisive_count)
+print("Összes videó száma:", total_count)
+print("Példák megosztó videókra:\n", divisive_sample)

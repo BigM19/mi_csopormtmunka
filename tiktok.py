@@ -85,5 +85,16 @@ print("Példák megosztó videókra:\n", divisive_sample)
 
 ### Modellezés ###
 
+#Korrelációs mátrix
+# Csak az érdekes oszlopok
+correlation = data[['video_duration_sec', 'video_view_count', 'video_like_count', 'video_comment_count']].corr()
+
+# Külön a hossz és a népszerűségi mutatók közötti korreláció
+duration_corr = correlation.loc['video_duration_sec']
+
+print(duration_corr)
+
+
+
 
 

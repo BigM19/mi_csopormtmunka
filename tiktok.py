@@ -107,6 +107,26 @@ plt.colorbar(label='Pontok száma (log)')
 plt.yscale('log')
 plt.show()
 
+#Regresszió a hossz és a megtekintések száma közötti kapcsolat vizsgálatára
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+# Jellemzők és célváltozó
+X = data[['video_duration_sec']]
+y = data['video_view_count']
+
+# Tanító és teszt halmaz
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Modell létrehozása
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Modell értékelése
+r_squared = model.score(X_test, y_test)
+print(f"R² érték (magyarázott variancia): {r_squared:.4f}")
+
+
 
 
 

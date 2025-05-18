@@ -28,3 +28,6 @@ print("Videóhossz statisztikák:")
 print(duration_stats)
 
 #Repository cloned
+# Adat betöltése
+df = pd.read_csv("tiktok_dataset.csv", sep=",")
+print(df.head())

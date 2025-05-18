@@ -46,3 +46,10 @@ claim_stats = {
     'medián': claim_videos['like_view_ratio'].median(),
     'szórás': claim_videos['like_view_ratio'].std()
 }
+
+#opinion statisztikák
+opinion_stats = {
+    'átlag': opinion_videos['like_view_ratio'].mean(),
+    'medián': opinion_videos['like_view_ratio'].median(),
+    'szórás': opinion_videos['like_view_ratio'].std()
+}

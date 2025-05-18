@@ -39,3 +39,10 @@ opinion_videos = df[df['claim_status'] == 'opinion']
 # Számosság
 claim_count = len(claim_videos)
 opinion_count = len(opinion_videos)
+
+#claim statisztikák
+claim_stats = {
+    'átlag': claim_videos['like_view_ratio'].mean(),
+    'medián': claim_videos['like_view_ratio'].median(),
+    'szórás': claim_videos['like_view_ratio'].std()
+}

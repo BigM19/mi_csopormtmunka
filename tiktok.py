@@ -21,3 +21,8 @@ df_clean = df.dropna(subset=["claim_status", "video_view_count", "video_like_cou
 # 7. Dátum/id mezők konvertálása (nincs ilyen mező most, megemlítjük)
 # (Ebben az adatban nincs dátum mező, ezt dokumentáljuk.)
 pass
+
+# 8. Alapstatisztikák kiszámítása: videóhossz, nézettség, like
+duration_stats = df_clean["video_duration_sec"].agg(['mean', 'median', 'std'])
+print("Videóhossz statisztikák:")
+print(duration_stats)

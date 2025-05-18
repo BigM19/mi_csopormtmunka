@@ -17,3 +17,7 @@ df.rename(columns={"#": "index"}, inplace=True)
 
 # 6. Hiányzó értékek kitöltése vagy törlése (konzervatív megközelítés: törlés)
 df_clean = df.dropna(subset=["claim_status", "video_view_count", "video_like_count"])
+
+# 7. Dátum/id mezők konvertálása (nincs ilyen mező most, megemlítjük)
+# (Ebben az adatban nincs dátum mező, ezt dokumentáljuk.)
+pass

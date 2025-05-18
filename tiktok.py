@@ -26,3 +26,9 @@ pass
 duration_stats = df_clean["video_duration_sec"].agg(['mean', 'median', 'std'])
 print("Videóhossz statisztikák:")
 print(duration_stats)
+
+# 9. Claim vs Opinion szűrés és statisztika
+grouped = df_clean[df_clean["claim_status"].isin(["claim", "opinion"])]
+claim_stats = grouped.groupby("claim_status")[["video_view_count", "video_like_count"]].agg(['count', 'mean', 'median', 'std'])
+print("Claim vs Opinion statisztikák:")
+print(claim_stats)

@@ -1,37 +1,29 @@
 import pandas as pd
 import numpy as np
 
-# 2. Adat betöltése
-df = pd.read_csv("tiktok_dataset.csv")
+#Adatok beolvasása
+data = pd.read_csv("tiktok_dataset.csv", sep=",")
+print(data.head)
 
-# 3. Alapvető adatellenőrzés: fejléc és hiányzó értékek
-print(df.info())
-print(df.isnull().sum())
+#Adatmezők és típusaik kiíratása
+print("Adatmezők és típusaik:")
+print(data.dtypes)
 
-# 4. Duplikált sorok ellenőrzése és eltávolítása
-df = df.drop_duplicates()
+#Felesleges oszlopok kiszűrése
+data.drop(columns=["#", "video_id", "video_transcription_text"], inplace=True)
 
-# 5. Oszlopnevek ellenőrzése és átnevezés a könnyebb hivatkozásért
-df.columns = df.columns.str.strip().str.lower()
-df.rename(columns={"#": "index"}, inplace=True)
+#Hiányzó adatok kezelése
+missing_values = data.isnull().sum()
+print("\nHiányzó értékek oszloponként:")
+print(missing_values)
+#Ahol a claim_status hiányzik, ott a többi érték is, ezeket töröljük
+data=data.dropna()
 
-# 6. Hiányzó értékek kitöltése vagy törlése (konzervatív megközelítés: törlés)
-df_clean = df.dropna(subset=["claim_status", "video_view_count", "video_like_count"])
+#Duplikált sorok ellenőrzése és eltávolítása
+data = data.drop_duplicates()
 
-# 7. Dátum/id mezők konvertálása (nincs ilyen mező most, megemlítjük)
-# (Ebben az adatban nincs dátum mező, ezt dokumentáljuk.)
-pass
-
-# 8. Alapstatisztikák kiszámítása: videóhossz, nézettség, like
-duration_stats = df_clean["video_duration_sec"].agg(['mean', 'median', 'std'])
+#Alapstatisztikák kiszámítása: videóhossz, nézettség, like
+duration_stats = data["video_duration_sec"].agg(['mean', 'median', 'std'])
 print("Videóhossz statisztikák:")
 print(duration_stats)
 
-# 9. Claim vs Opinion szűrés és statisztika
-grouped = df_clean[df_clean["claim_status"].isin(["claim", "opinion"])]
-claim_stats = grouped.groupby("claim_status")[["video_view_count", "video_like_count"]].agg(['count', 'mean', 'median', 'std'])
-print("Claim vs Opinion statisztikák:")
-print(claim_stats)
-
-# 10. Tisztított adat exportálása CSV-be
-df_clean.to_csv("cleaned_tiktok_dataset.csv", index=False)

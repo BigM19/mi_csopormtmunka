@@ -14,3 +14,6 @@ df = df.drop_duplicates()
 # 5. Oszlopnevek ellenőrzése és átnevezés a könnyebb hivatkozásért
 df.columns = df.columns.str.strip().str.lower()
 df.rename(columns={"#": "index"}, inplace=True)
+
+# 6. Hiányzó értékek kitöltése vagy törlése (konzervatív megközelítés: törlés)
+df_clean = df.dropna(subset=["claim_status", "video_view_count", "video_like_count"])

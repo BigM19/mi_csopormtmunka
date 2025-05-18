@@ -10,3 +10,7 @@ print(df.isnull().sum())
 
 # 4. Duplikált sorok ellenőrzése és eltávolítása
 df = df.drop_duplicates()
+
+# 5. Oszlopnevek ellenőrzése és átnevezés a könnyebb hivatkozásért
+df.columns = df.columns.str.strip().str.lower()
+df.rename(columns={"#": "index"}, inplace=True)

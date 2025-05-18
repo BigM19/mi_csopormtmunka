@@ -53,3 +53,9 @@ opinion_stats = {
     'medián': opinion_videos['like_view_ratio'].median(),
     'szórás': opinion_videos['like_view_ratio'].std()
 }
+
+#kiírás
+print("Claim videók száma:", claim_count)
+print("Opinion videók száma:", opinion_count)
+print("Claim statisztikák:", claim_stats)
+print("Opinion statisztikák:", opinion_stats)
